@@ -8,3 +8,11 @@ test("gate default to unlocked and open", () => {
   expect(getByText(/unlocked/i)).toBeTruthy();
   expect(getByText(/open/i)).toBeTruthy();
 });
+
+test("display and controls rendered", () => {
+  const { getByText } = render(<Dashboard />);
+  getByText(/unlocked/i);
+  getByText(/open/i);
+  getByText(/lock gate/i);
+  getByText(/close gate/i);
+});
