@@ -9,3 +9,10 @@ test("cannot be opened if locked", () => {
   fireEvent.click(getByText(/open gate/i));
   expect(toggleClosed).not.toBeCalled();
 });
+
+test("cannot be locked if open", () => {
+  const toggleLocked = jest.fn();
+  const { getByText } = render(<Controls toggleLocked={toggleLocked} locked={false} closed={false}/>);
+  fireEvent.click(getByText(/lock gate/i));
+  expect(toggleLocked).not.toBeCalled();
+});
