@@ -8,3 +8,13 @@ test("displays state of gate", () => {
     getByText(/open/i);
     getByText(/unlocked/i);
 })
+
+test("displays closed if props is true", () => {
+  const { getByText } = render(<Display closed={true} />)
+  getByText(/closed/i);
+})
+
+test("displays open if props is false", () => {
+  const { getByText } = render(<Display closed={false} />)
+  getByText(/open/i);
+})
