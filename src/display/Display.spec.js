@@ -38,3 +38,8 @@ test("when closed use the red-led class", () => {
   const { getByText } = render(<Display closed={true} />);
   expect(getByText(/closed/i).classList.contains('red-led')).toBeTruthy();
 });
+
+test("when unlocked use green-led class", () => {
+  const { getByText } = render(<Display locked={false} />);
+  expect(getByText(/unlocked/i).classList.contains('green-led')).toBeTruthy();
+});
