@@ -28,3 +28,13 @@ test("displays unlocked if prop is false", () => {
   const { getByText } = render(<Display locked={false} />);
   getByText(/unlocked/i);
 });
+
+test("when locked use the red-led class", () => {
+  const { getByText } = render(<Display locked={true} />);
+  expect(getByText(/locked/i).classList.contains('red-led')).toBeTruthy();
+});
+
+test("when closed use the red-led class", () => {
+  const { getByText } = render(<Display closed={true} />);
+  expect(getByText(/closed/i).classList.contains('red-led')).toBeTruthy();
+});
