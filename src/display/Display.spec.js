@@ -7,14 +7,24 @@ test("displays state of gate", () => {
   const { getByText } = render(<Display />);
     getByText(/open/i);
     getByText(/unlocked/i);
-})
+});
 
 test("displays closed if props is true", () => {
-  const { getByText } = render(<Display closed={true} />)
+  const { getByText } = render(<Display closed={true} />);
   getByText(/closed/i);
-})
+});
 
 test("displays open if props is false", () => {
-  const { getByText } = render(<Display closed={false} />)
+  const { getByText } = render(<Display closed={false} />);
   getByText(/open/i);
-})
+});
+
+test("displays locked if prop is true", () => {
+  const { getByText } = render(<Display locked={true} />);
+  getByText(/locked/i);
+});
+
+test("displays unlocked if prop is false", () => {
+  const { getByText } = render(<Display locked={false} />);
+  getByText(/unlocked/i);
+});
