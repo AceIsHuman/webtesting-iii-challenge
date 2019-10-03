@@ -16,3 +16,9 @@ test("cannot be locked if open", () => {
   fireEvent.click(getByText(/lock gate/i));
   expect(toggleLocked).not.toBeCalled();
 });
+
+test("buttons render to dom", () => {
+  const { getByText } = render(<Controls locked={false} closed={false} />);
+  getByText(/lock gate/i);
+  getByText(/close gate/i);
+});
