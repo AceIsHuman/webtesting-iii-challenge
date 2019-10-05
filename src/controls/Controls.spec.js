@@ -30,3 +30,11 @@ test("toggle closed button is disabled when locked", () => {
   fireEvent.click(queryByText(/open gate/i));
   expect(mockToggleClosed).not.toBeCalled();
 });
+
+test("toggle locked button is disabled when open", () => {
+  const mockToggleLocked = jest.fn();
+  const { queryByText } = render(<Controls locked={false} closed={false} toggleLocked={mockToggleLocked} />);
+
+  fireEvent.click(queryByText(/lock gate/i));
+  expect(mockToggleLocked).not.toBeCalled();
+});
