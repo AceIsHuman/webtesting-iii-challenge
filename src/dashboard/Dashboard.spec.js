@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import Dashboard from './Dashboard';
 
@@ -15,4 +15,17 @@ test("display and controls rendered", () => {
   getByText(/open/i);
   getByText(/lock gate/i);
   getByText(/close gate/i);
+});
+
+test("buttons text updates when clicked", () => {
+  const { getByText } = render(<Dashboard />);
+
+  const toggleCloseGate = getByText(/close gate/i);
+  const toggleLockGate = getByText(/lock gate/i);
+
+  fireEvent.click(toggleCloseGate);
+  fireEvent.click(toggleLockGate);
+
+  getByText(/open gate/i);
+  getByText(/unlock gate/i);
 });
